@@ -25,23 +25,32 @@ function Square(props) {
     }
   
     render() {
+
+      const rows = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+
+      ] ;
+
+     
+
+      const boardRow = rows.map( row =>{
+
+        const columns = row.map((number)=> 
+          this.renderSquare(number))
+
+        return(
+          <div className="board-row">
+            {columns}
+          </div>
+
+        )
+      }); 
+
       return (
         <div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
+          {boardRow}
         </div>
       );
     }
